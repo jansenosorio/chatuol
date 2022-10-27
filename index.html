@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page's style -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Links from google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- End styles -->
+
+    <title>Chat UOL</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img src="img/logo.png" class="logo" />
+        <ion-icon name="people"></ion-icon>
+      </div>
+      <div class="main">
+        <div class="mensage-box m-normal">
+          <span class="hour">(9:03:04)</span>
+          <span class="name">João</span>
+          <span class="mensage">entra na sala...</span>
+        </div>
+      </div>
+      <div class="footer">
+        <input
+          type="text"
+          placeholder="Escreva aqui..."
+          class="inMensageText"
+        />
+        <ion-icon name="paper-plane-outline"></ion-icon>
+      </div>
+    </div>
+  </body>
+
+  <!-- Link to load my icons -->
+  <script
+    type="module"
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+  ></script>
+
+  <!-- Link to load Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- Link of my script Javascript -->
+  <script src="src/script.js"></script>
+</html>
