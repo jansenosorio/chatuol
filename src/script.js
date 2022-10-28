@@ -1,9 +1,12 @@
-// post request que enviar o nome do usuário e verificar se já existe outro com o mesmo nome
+// Função POST Axios - request que enviar o nome do usuário e verificar se já existe outro com o mesmo nome
+let inNomeUsuario = ''
+let nomeUsuario = ''
+let axiosNomeUsuario = {}
 
 function postRequest() {
-  let inNomeUsuario = document.querySelector('.inNomeUsuario')
-  let nomeUsuario = inNomeUsuario.value
-  let axiosNomeUsuario = { name: nomeUsuario }
+  inNomeUsuario = document.querySelector('.inNomeUsuario')
+  nomeUsuario = inNomeUsuario.value
+  axiosNomeUsuario = { name: nomeUsuario }
 
   const postRequestPromise = axios.post(
     'https://mock-api.driven.com.br/api/v6/uol/participants',
@@ -14,6 +17,8 @@ function postRequest() {
   postRequestPromise.then(nomeAceitoPeloServidor)
 }
 
+// Função post, quando der erro
+
 function erroNomesIguaisEntrada(response) {
   if (response.response.status === 400) {
     alert('Nome de Usuário já encontrado, favor escolher outro')
@@ -22,12 +27,43 @@ function erroNomesIguaisEntrada(response) {
   }
 }
 
+// Função post, quando der acerto
+
 function nomeAceitoPeloServidor(nome) {
   const paginaEntradaDeNome = document.querySelector('.paginaEntradaDeNome')
   paginaEntradaDeNome.classList.add('esconder')
 }
 
-// Promessa vinda do servidor, solicitada a cada 3 segundos
+// Função para verificar status
+
+setInterval(() => {
+  const promise = axios.post(
+    'https://mock-api.driven.com.br/api/v6/uol/status',
+    axiosNomeUsuario
+  )
+}, 5000)
+
+function enviarMensagem() {
+  let inMensageText = document.querySelector('.footer input')
+  let mensageText = inMensageText.value
+  let axiosMensageTexto = {
+    from: nomeUsuario,
+    to: 'Todos',
+    text: mensageText,
+    type: 'message'
+  }
+
+  const promise = axios.post(
+    'https://mock-api.driven.com.br/api/v6/uol/messages',
+    axiosMensageTexto
+  )
+
+  promise.catch(requestProblem)
+
+  inMensageText.value = ''
+}
+
+// Função GET - Axios - Promessa vinda do servidor, solicitada a cada 3 segundos
 setInterval(() => {
   const promise = axios.get(
     'https://mock-api.driven.com.br/api/v6/uol/messages'
@@ -61,7 +97,10 @@ function request(response) {
           </p>
         </div>
         `
-    } else {
+    } else if (
+      response.data[i].type === 'private_message' &&
+      response.data[i].to === nomeUsuario
+    ) {
       caixaDeMensagem.innerHTML += `
         <div class="mensage-box m-reserved">
           <p>
@@ -80,5 +119,5 @@ function request(response) {
 }
 
 function requestProblem(response) {
-  alert('Deu pau')
+  windows.location.reload()
 }
