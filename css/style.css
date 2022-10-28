@@ -13,8 +13,10 @@ body {
 .container {
   width: 375px;
   height: 667px;
+  box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.42);
+  margin-top: 10px;
 
-  background-color: red;
+  transition: all 400ms ease;
 }
 
 
@@ -32,7 +34,7 @@ body {
   height: 80px;
 
   background-color: #FFFFFF;
-  box-shadow: 0px 4px 6px rgba(0.05, 0, 0, 0.05);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .header ion-icon {
@@ -42,10 +44,12 @@ body {
 /* Main's configurations */
 
 .main {
+  transition: all 400ms ease;
+
   box-sizing: border-box;
   padding-top: 22px;
 
-  overflow: hidden;
+  overflow-x: scroll;
 
   width: 100%;
   height: 507px;
@@ -57,7 +61,10 @@ body {
 /* Mensage's cotainer configuration */
 
 .mensage-box {
+
+
   box-sizing: border-box;
+
   border-radius: 2px;
   padding: 0 8px 0 8px;    
   margin: 4px 0 4px 0;
@@ -113,14 +120,13 @@ body {
 }
 
 .footer input {
-  height: 100%;
+  height: 40px;
   border: none;
 
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
-  line-height: 21px;
 }
 
 .footer input::placeholder {
@@ -134,4 +140,22 @@ body {
 
 .footer ion-icon {
   font-size: 26px;
+}
+
+
+@media (max-width: 414px) {
+  body {
+    margin: 0 0 0 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .container {
+    width: 100%;
+    margin: 0 0 0 0;
+  }
+  
+  .main {
+    height: 100%;
+  }
 }
