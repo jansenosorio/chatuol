@@ -1,3 +1,32 @@
+// post request que enviar o nome do usuário e verificar se já existe outro com o mesmo nome
+
+function postRequest() {
+  let inNomeUsuario = document.querySelector('.inNomeUsuario')
+  let nomeUsuario = inNomeUsuario.value
+  let axiosNomeUsuario = { name: nomeUsuario }
+
+  const postRequestPromise = axios.post(
+    'https://mock-api.driven.com.br/api/v6/uol/participants',
+    axiosNomeUsuario
+  )
+
+  postRequestPromise.catch(erroNomesIguaisEntrada)
+  postRequestPromise.then(nomeAceitoPeloServidor)
+}
+
+function erroNomesIguaisEntrada(response) {
+  if (response.response.status === 400) {
+    alert('Nome de Usuário já encontrado, favor escolher outro')
+  } else {
+    window.location.reload()
+  }
+}
+
+function nomeAceitoPeloServidor(nome) {
+  const paginaEntradaDeNome = document.querySelector('.paginaEntradaDeNome')
+  paginaEntradaDeNome.classList.add('esconder')
+}
+
 // Promessa vinda do servidor, solicitada a cada 3 segundos
 setInterval(() => {
   const promise = axios.get(
