@@ -5,18 +5,86 @@ body {
   background-color: #E5E5E5;
   
   font-family: 'Roboto', sans-serif;
+
+  transition: all 1500ms ease;
   
 }
 
 /* Container's configurations */
 
 .container {
+  position: relative;
   width: 375px;
-  height: 667px;
+  max-height: 100%;
   box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.42);
   margin-top: 10px;
 
   transition: all 400ms ease;
+}
+
+/* Bonus: */
+
+.paginaEntradaDeNome {
+  position: absolute;
+  z-index: 3;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+}
+
+.paginaEntradaDeNome .logo {
+  text-align: center;
+  width: 100%;
+  height: auto;
+  padding-bottom: 100px;
+}
+
+.paginaEntradaDeNome input {
+  width: 261px;
+  height: 54px;
+
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+
+  border: 1px solid #D7D7D7;
+  border-radius: 4px;
+
+  margin-top: 94px;
+  margin-bottom: 15px;
+}
+
+.paginaEntradaDeNome img {
+  width: 130px;
+  height: 92px;
+}
+
+.paginaEntradaDeNome button {
+  width: 109px;
+  height: 45px;
+
+  border: none;
+  background: #E7E7E7;
+  border-radius: 9px;
+
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  color: #696969;
+  margin-top: 40px;
+}
+
+.paginaEntradaDeNome button:hover {
+  cursor: pointer;
+}
+
+.esconder {
+  display: none;
 }
 
 
@@ -44,15 +112,14 @@ body {
 /* Main's configurations */
 
 .main {
-  transition: all 400ms ease;
-
   box-sizing: border-box;
   padding-top: 22px;
 
   overflow-x: scroll;
 
   width: 100%;
-  height: 507px;
+  min-height: 507px;
+  max-height: 700px;
 
   background-color: #F3F3F3;
 }
@@ -62,20 +129,24 @@ body {
 
 .mensage-box {
 
-
   box-sizing: border-box;
+
+  flex-wrap: nowrap;
 
   border-radius: 2px;
   padding: 0 8px 0 8px;    
   margin: 4px 0 4px 0;
 
+
   display: flex;
   align-items: center;
 
   font-size: 14px;
+  line-height: 21px;
 
   width: 100%;
-  height: 40px;
+  min-height: 40px;
+  max-height: 100px;
 }
 
 .mensage-box .hour {
@@ -88,11 +159,11 @@ body {
   margin-right: 5px;
 }
 
-.m-enter {
+.m-status {
   background-color: #DCDCDC;
 }
 
-.m-normal {
+.m-message {
   background-color: #FFFFFF;
 }
 
