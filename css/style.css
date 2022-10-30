@@ -146,6 +146,8 @@ body {
   width: 100%;
   min-height: 40px;
   max-height: 100px;
+
+  text-overflow: ellipsis;
 }
 
 .mensage-box .hour {
